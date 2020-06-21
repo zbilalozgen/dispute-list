@@ -1,0 +1,67 @@
+.dispute-list {
+  height: 100%;
+  position: relative;
+  background: url(../../assets/bg.png) no-repeat 0 -70px;
+  background-size: 100% auto;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-left: 14px;
+    padding-top: 5%;
+  }
+
+  &__heading-text {
+    max-width: 75%;
+    color: #fff;
+    font-size: 30px;
+  }
+
+  &__search {
+    max-width: 25%;
+    padding: 0;
+    input{
+      background: #1C1C21;
+      border: 1px solid #3D3E47;
+      border-radius: 7px;
+      color: #fff;
+      padding: 15px 10px;
+      width: 100%;
+      outline: none;
+      font-weight: bold;
+    }
+  }
+
+  &__items {
+    width: 90%;
+    margin-left: 30px;
+  }
+}
+
+.nav-arrows {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 30px;
+  button{
+    padding: 8px 20px;
+    background: none;
+    border: 1px solid #9B9B9B;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+
+    &:disabled {
+      cursor: not-allowed;
+      background: #9B9B9B;
+      border: 1px solid #fff;
+    }
+
+    img {
+      width: 16px;
+    }
+  }
+}
+
+

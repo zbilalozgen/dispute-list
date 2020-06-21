@@ -1,21 +1,22 @@
-import {
-  GET_DATA,
-  LOADING,
-  FETCH_ERROR,
-} from "./constants";
+import DISPUTES  from './constants'
 
-import axios from "axios";
+const loadDisputes = (url) => ({
+  type: DISPUTES.LOAD,
+  url
+})
 
-export function loading() {
-  return { type: LOADING };
+const setDisputes = disputes => ({
+  type: DISPUTES.LOAD_SUCCESS,
+  disputes
+})
+
+const setError = error => ({
+  type: DISPUTES.LOAD_FAIL,
+  error
+})
+
+export {
+  loadDisputes,
+  setDisputes,
+  setError
 }
-
-export const getData = () => {
-  return { type: GET_DATA}
-};
-
-export function fetchError(error) {
-  return { type: FETCH_ERROR, error};
-}
-
-
