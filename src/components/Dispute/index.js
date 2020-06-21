@@ -34,7 +34,7 @@ const Dispute = ({dispute}) => {
               {dispute.match.users[1]}
             </span>
           </div>
-          <div className="row">
+          <div className="row" style={{fontSize: '12px', color: '#9B9B9B'}}>
             <span>Düello#{dispute.match.duel}</span>
             {' '}<span>•</span>{' '}
             <span>{dispute.type}</span>
