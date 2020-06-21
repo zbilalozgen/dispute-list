@@ -10,7 +10,7 @@ const fetchDisputes = async url => {
   let res = await axios.get(url, {headers: {'Accept-Language': 'tr'}})
   let data = await res.data
   //Delay for spinner
-  /*await delay(2000)*/
+  await delay(500)
   return data
 }
 
