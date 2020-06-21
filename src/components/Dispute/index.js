@@ -9,24 +9,26 @@ import StatusIcon from '../../assets/status-icon.png'
 const formatDate = (d) => {
   const date = new Date(d)
   const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: '2-digit', day: '2-digit' })
-  const [{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat .formatToParts(date )
+  const [{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat.formatToParts(date )
   return <span>{`${day}.${month}.${year}`}</span>
 }
 
 const Dispute = ({dispute}) => {
-  const statusColor = dispute.status === 'pending' && '#EEB502' || dispute.status === 'accepted' && '#00C202' || dispute.status === 'declined' && '#EB2C44'
+  const statusColor = dispute.status === 'pending' ? '#EEB502' : dispute.status === 'accepted' ? '#00C202' : dispute.status === 'declined' && '#EB2C44'
 
   return (
     <div className="row dispute-card">
       <div className="col-sm-6 dispute-card__duel-info">
         <div className="col-sm-3">
-          <img src={GameLogo} width="50"/>
+          <img alt="game-logo" src={GameLogo} width="50"/>
         </div>
         <div className="col-sm-8">
           <div className="row dispute-card__users">
             <span>
+              {/*Fix for no username */}
+              {dispute.match.users.length === 0 && 'Kullanıcı bulunamadı!'}
               {dispute.match.users[0]}
-              <img src={SwordIcon} className="dispute-card__sword-icon"/>
+              <img alt="sword-icon" src={SwordIcon} className="dispute-card__sword-icon"/>
               {dispute.match.users[1]}
             </span>
           </div>
@@ -40,7 +42,7 @@ const Dispute = ({dispute}) => {
       <div className="divider"></div>
       <div className="col-sm-2">
         <div className="row dispute-card__info">
-          <img src={CreatorLogo}/>
+          <img alt="creator-logo" src={CreatorLogo}/>
           <span>Oluşturan</span>
         </div>
         <div className="row">
@@ -50,7 +52,7 @@ const Dispute = ({dispute}) => {
       <div className="divider"></div>
       <div className="col-sm-2">
         <div className="row dispute-card__info">
-          <img src={CalenderIcon}/>
+          <img alt="calendar-icon" src={CalenderIcon}/>
           <span>Tarih</span>
         </div>
         <div className="row">
@@ -59,7 +61,7 @@ const Dispute = ({dispute}) => {
       </div>
       <div className="col-sm-2">
         <div className="row dispute-card__info">
-          <img src={StatusIcon}/>
+          <img alt="status-icon" src={StatusIcon}/>
           <span>Durum</span>
         </div>
         <div className="row">

@@ -5,7 +5,7 @@ import './index.scss'
 const Dispute = () => {
   return (
     <div className='header-container'>
-      <img className="header-container__logo" src={Logo}/>
+      <img alt="brand-logo" className="header-container__logo" src={Logo}/>
     </div>
   );
 };

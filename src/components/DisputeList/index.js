@@ -8,32 +8,28 @@ import BackArrow from '../../assets/back.svg'
 import Logo from '../../assets/Logo.png'
 import LoadingScreen from 'react-loading-screen'
 
-const DisputeList = (props) => {
+const DisputeList = ({disputes, isLoading, loadDisputes}) => {
 
   const [searchTerm, setSearchTerm] = useState('')
+  const noResult = !disputes.results.length
 
   useEffect(() => {
-    props.loadDisputes('https://api.staging.gamerarena.com/disputes/')
-  },[])
-
-  useEffect(() => {
-    let requestUrl = 'https://api.staging.gamerarena.com/disputes/'
-    if( searchTerm.length >= 2 ){
-      requestUrl += `?searchUsername=${searchTerm}`
-      props.loadDisputes(requestUrl)
+    if(searchTerm.length > 2) {
+      loadDisputes(`https://api.staging.gamerarena.com/disputes/?searchUsername=${searchTerm}` )
     } else if (searchTerm.length === 0) {
-      props.loadDisputes(requestUrl)
+      loadDisputes('https://api.staging.gamerarena.com/disputes/')
     }
-  }, [searchTerm])
+  }, [searchTerm,loadDisputes])
 
 
   const handleNavClick = (direction) => {
-    props.loadDisputes(props.disputes[direction])
+    loadDisputes(disputes[direction])
   }
     return (
+      <>
      <div className="dispute-list container-fluid">
        <LoadingScreen
-         loading={props.isLoading}
+         loading={isLoading}
          bgColor="#16161b"
          spinnerColor="#9ee5f8"
          textColor="#676767"
@@ -48,14 +44,23 @@ const DisputeList = (props) => {
        </div>
        <div className="dispute-list__items">
          <div className="nav-arrows">
-           <button disabled={!props.disputes.previous} onClick={() => handleNavClick('previous')}><img src={BackArrow}/></button>
-           <button disabled={!props.disputes.next} onClick={() => handleNavClick('next')}><img src={NextArrow}/></button>
+           <button disabled={!disputes.previous} onClick={() => handleNavClick('previous')}><img alt="back-arrow" src={BackArrow}/></button>
+           <button disabled={!disputes.next} onClick={() => handleNavClick('next')}><img alt="next-arrow" src={NextArrow}/></button>
          </div>
-         {props.disputes.results.map(dispute => {
-           return <Dispute key={dispute.id} dispute={dispute}/>
+         {disputes.results.map((dispute, i) => {
+           //Some items return with same id so use index as key
+           return <Dispute key={i} dispute={dispute}/>
          })}
        </div>
      </div>
+  {!isLoading && noResult &&
+  <div className='dispute-list__no-result'>
+           <span>
+             Aradığınız kullanıcıyı bulamadık, lütfen başka bir anahtar kelime deneyin!
+           </span>
+  </div>
+  }
+  </>
    )
 }
 
