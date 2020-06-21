@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.scss'
+//Icons
 import GameLogo from '../../assets/lol-logo.png'
 import SwordIcon from '../../assets/sword-icon.png'
 import CreatorLogo from '../../assets/creator-logo.png'
@@ -18,6 +19,7 @@ const Dispute = ({dispute}) => {
 
   return (
     <div className="row dispute-card">
+
       <div className="col-sm-6 dispute-card__duel-info">
         <div className="col-sm-3">
           <img alt="game-logo" src={GameLogo} width="50"/>
@@ -39,7 +41,9 @@ const Dispute = ({dispute}) => {
           </div>
         </div>
       </div>
+
       <div className="divider"></div>
+
       <div className="col-sm-2">
         <div className="row dispute-card__info">
           <img alt="creator-logo" src={CreatorLogo}/>
@@ -49,7 +53,9 @@ const Dispute = ({dispute}) => {
           <span style={{fontSize: '18px'}}>{dispute.creator}</span>
         </div>
       </div>
+
       <div className="divider"></div>
+
       <div className="col-sm-2">
         <div className="row dispute-card__info">
           <img alt="calendar-icon" src={CalenderIcon}/>
@@ -59,6 +65,9 @@ const Dispute = ({dispute}) => {
           <span style={{fontSize: '16px'}}>{formatDate(dispute.createdAt)}</span>
         </div>
       </div>
+
+      <div className="divider"></div>
+
       <div className="col-sm-2">
         <div className="row dispute-card__info">
           <img alt="status-icon" src={StatusIcon}/>

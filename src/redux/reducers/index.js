@@ -1,11 +1,11 @@
 import {combineReducers} from "redux";
 
-import loadingReducer from "./loadingReducer";
+import loadReducer from "./loadReducer";
 import disputesReducer from "./disputesReducer";
 import errorReducer from "./errorReducer";
 
 const rootReducer = combineReducers({
-  isLoading: loadingReducer,
+  load: loadReducer,
   disputes: disputesReducer,
   error: errorReducer
 })

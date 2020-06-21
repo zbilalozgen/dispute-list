@@ -4,9 +4,10 @@ import { setDisputes, setError} from "./actions"
 import DISPUTES from "./constants"
 import fetchDisputes from "./api"
 
-export const getUrl = state => state.isLoading.url
+export const getUrl = state => state.load.url
 
-export function* handleDisputesLoad() {
+//Handle load dispatch
+function* handleDisputesLoad() {
   try {
     const url = yield select(getUrl)
     const disputes = yield call(fetchDisputes, url)
@@ -16,6 +17,7 @@ export function* handleDisputesLoad() {
   }
 }
 
+//Watch for load dispatch
 export default function* watchDisputesLoad() {
   yield takeEvery(DISPUTES.LOAD, handleDisputesLoad)
 }

@@ -1,6 +1,6 @@
 import DISPUTES from "../constants";
 
-const loadingReducer = (state = {load: false, url: ''}, action) => {
+const loadReducer = (state = {load: false, url: ''}, action) => {
   switch (action.type) {
     case DISPUTES.LOAD:
       return {
@@ -10,10 +10,10 @@ const loadingReducer = (state = {load: false, url: ''}, action) => {
     case DISPUTES.LOAD_SUCCESS:
       return false
     case DISPUTES.LOAD_FAIL:
-      return {load: false, url: ''}
+      return false
     default:
       return state
   }
 }
 
-export default loadingReducer
+export default loadReducer
